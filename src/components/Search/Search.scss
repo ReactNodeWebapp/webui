@@ -1,0 +1,35 @@
+@import '../../styles/_variables';
+
+.search {
+    &__input {
+        height: 1.5rem;
+        border: none;
+        border-bottom: 1px solid $secondary-color;
+        outline: none;
+        color: $secondary-color;
+        width: 120px;
+        padding-bottom: .5rem;
+        background-color: transparent;
+        font-size: .9rem;
+        transition: all .5s cubic-bezier(0, 0, .58, 1);
+        cursor: pointer;
+
+        &::placeholder {
+            color: $secondary-color;
+        }
+
+        &::-webkit-search-cancel-button {
+            position: relative;
+            right: -3px;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        &:focus {
+            width: 350px;
+            cursor: text;
+            border-color: $secondary-color;
+        }
+    }
+
+}

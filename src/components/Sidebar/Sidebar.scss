@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+
+body {
+    transition: padding .3s ease-out;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    transform: translateX(-100%);
+    background: $dark-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform .3s ease-out;
+    width: 180px;
+
+    &.active {
+        transform: translateX(0);
+        transition: all .3s ease-out;
+    }
+
+    &__nav {
+        width: 100%;
+    }
+
+    &__list {
+        list-style: none;
+        height: 100%;
+    }
+
+    &__item {
+        position: relative;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .2s cubic-bezier(0, 0, .58, 1);
+        border-left: 4px solid transparent;
+
+        &:hover {
+            border-color: $secondary-color;
+
+            &::before,
+            &::after {
+                content: '';
+                transition: all .2s cubic-bezier(0, 0, .58, 1);
+            }
+        }
+
+        &:hover .sidebar__item-link,
+        &:hover .sidebar__icon {
+            color: $secondary-color;
+        }
+
+        &::before {
+            content: none;
+            position: absolute;
+            top: 50%;
+            left: -1px;
+            transform: translateY(-50%);
+            border-left: 7.5px solid $secondary-color;
+            border-top: 7.5px solid transparent;
+            border-bottom: 7.5px solid transparent;
+        }
+    }
+
+    &__item-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 0 1rem;
+        color: white;
+        text-align: left;
+        transition: all .15s cubic-bezier(0, 0, .58, 1);
+        position: relative;
+        width: 95%;
+        height: 100%;
+    }
+
+    &__item-name {
+        font-size: 1.1rem;
+        margin-top: .5rem;
+        text-transform: uppercase;
+        font-weight: 300;
+    }
+
+    &__icon {
+        color: white;
+        transition: all .15s cubic-bezier(0, 0, .58, 1);
+    }
+
+    &__bottom-buttons {
+        width: 100%;
+        padding-top: .75rem;
+        border-top: 1px solid white;
+        margin-bottom: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__home-icon {
+        color: white;
+    }
+}

@@ -1,0 +1,19 @@
+.form-wrapper {
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 4px;
+
+  &__title {
+    color: $dark-color;
+    font-weight: 500;
+  }
+
+  & div.MuiInputBase-formControl {
+    margin-bottom: 1rem;
+  }
+}

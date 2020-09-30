@@ -15,7 +15,7 @@ function RegistrationForm(props) {
     return (
         <form
             className="registration-form"
-            onSubmit={() => props.handleSubmit()}
+            onSubmit={props.handleSubmit}
         >
             <ThemeProvider theme={theme}>
                 <TextField 
@@ -63,7 +63,12 @@ function RegistrationForm(props) {
                     autoComplete="new-password"
                 />
             </ThemeProvider>
-            <button type="submit" className="registration-form__submit-btn">Sign Up</button>
+            <button
+                type="submit"
+                className="registration-form__submit-btn"
+            >
+                Sign Up
+            </button>
         </form>
     );
 }

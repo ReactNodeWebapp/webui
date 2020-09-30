@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router";
 
-import './LoginContainer.scss';
 import LoginForm from "../LoginForm/LoginForm";
+import { login } from '../../../api/AuthService';
+
+import './LoginContainer.scss';
 
 function RegistrationContainer() {
 
@@ -13,8 +15,22 @@ function RegistrationContainer() {
         password: ""
     });
 
-    const onLoginSubmit = async () => {
+    const [ loginMsg, setLoginMsg ] = useState('');
 
+    const [loginError, setLoginError] = useState(false);
+
+    const onLoginSubmit = async (event) => {
+        event.preventDefault();
+
+        const response = await login(loginData);
+        if(response.hasErrors) {
+            setLoginMsg(response.message);
+            setLoginError(true);
+        } else {
+            setLoginMsg("Successful login.");
+            setLoginError(false);
+        }
+        //history.push('/profile');
     }
 
     return (
@@ -24,6 +40,8 @@ function RegistrationContainer() {
                 handleSubmit={onLoginSubmit}
                 loginData={loginData}
                 setLoginData={setLoginData}
+                loginMsg={loginMsg}
+                loginError={{loginError}}
             />
         </div>
     )

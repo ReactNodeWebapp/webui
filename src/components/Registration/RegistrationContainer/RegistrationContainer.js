@@ -17,14 +17,11 @@ function RegistrationContainer() {
         password: ""
     });
 
-    const onRegistrationSubmit = async () => {
+    const onRegistrationSubmit = async (event) => {
+        event.preventDefault();
         const response = await register(registrationData);
-        console.log(response.message)
-        if (response.status === 200) {
-            history.push("/thank-you");
-        } else {
-            console.log(response);
-        }
+        history.push('/thanks');
+        console.log(response.data);
     }
 
     return (

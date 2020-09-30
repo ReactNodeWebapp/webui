@@ -11,9 +11,10 @@
   &__title {
     color: $dark-color;
     font-weight: 500;
+    margin-bottom: 1.5rem;
   }
 
-  & div.MuiInputBase-formControl {
-    margin-bottom: 1rem;
+  & div.MuiFormControl-root {
+    margin-top: 1rem;
   }
 }

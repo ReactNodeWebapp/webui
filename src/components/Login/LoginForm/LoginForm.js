@@ -3,6 +3,7 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import theme from '../../../styles/_forms';
 import './LoginForm.scss';
@@ -15,10 +16,10 @@ function LoginForm(props) {
 
     return (
         <>
-            {props.loginMsg &&
+            {props.loginError &&
                 <Alert
                     variant="filled"
-                    severity={props.loginError ? "error" : "success"}
+                    severity="error"
                     role="alert"
                     className="login-alert"
                 >
@@ -49,7 +50,18 @@ function LoginForm(props) {
                         onChange={handleUserInput}
                     />
                 </ThemeProvider>
-                <button type="submit" className="login-form__submit-btn">Sign In</button>
+                <button
+                    type="submit"
+                    className="login-form__submit-btn"
+                    disabled={props.loader ? true : false}
+                >
+                    Sign In
+                    {props.loader &&
+                        <ThemeProvider theme={theme}>
+                            <CircularProgress size={16} className="loader"/>
+                        </ThemeProvider>
+                    }
+                </button>
             </form>
         </>
     );

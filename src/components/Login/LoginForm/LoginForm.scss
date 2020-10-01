@@ -23,5 +23,19 @@
     border-radius: 4px;
     cursor: pointer;
     margin-top: 2rem;
+    transition: all .2s cubic-bezier(0, 0, .58, 1);
+
+    &:disabled {
+      background-color: white;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .loader {
+    margin-left: 1rem;
   }
 }

@@ -17,20 +17,40 @@ function RegistrationContainer() {
         password: ""
     });
 
+    const [ loginMsg, setLoginMsg ] = useState('');
+
+    const [loginError, setLoginError] = useState(false);
+
+    const [loader, setLoader] = useState(false);
+
     const onRegistrationSubmit = async (event) => {
         event.preventDefault();
+        setLoader(true);
+
         const response = await register(registrationData);
-        history.push('/thanks');
-        console.log(response.data);
+        setTimeout(() => {
+            if(response.hasErrors) {
+                setLoader(false);
+                setLoginError(true);
+                setLoginMsg(response.message);
+            } else {
+                setLoader(false);
+                setLoginError(false);
+                //history.push('/home');
+            }
+        }, 300);
     }
 
     return (
         <div className="form-wrapper">
-            <h2 className="form-wrapper__title">Create your free account</h2>
+            <h2 className="form-wrapper__title">Create a new account</h2>
             <RegistrationForm
                 handleSubmit={onRegistrationSubmit}
                 registrationData={registrationData}
                 setRegistrationData={setRegistrationData}
+                loader={loader}
+                loginMsg={loginMsg}
+                loginError={loginError}
             />
         </div>
     )

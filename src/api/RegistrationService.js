@@ -5,7 +5,7 @@ export async function register(registrationData) {
         const response = await axios.post("users/registration", registrationData);
         return response.data;
     } catch (error) {
-        console.error(error);
-        return error.response;
+        console.error(error.response);
+        return error.response.data;
     }
 }

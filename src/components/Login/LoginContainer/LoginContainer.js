@@ -19,18 +19,24 @@ function RegistrationContainer() {
 
     const [loginError, setLoginError] = useState(false);
 
+    const [loader, setLoader] = useState(false);
+
     const onLoginSubmit = async (event) => {
         event.preventDefault();
+        setLoader(true);
 
         const response = await login(loginData);
-        if(response.hasErrors) {
-            setLoginMsg(response.message);
-            setLoginError(true);
-        } else {
-            setLoginMsg("Successful login.");
-            setLoginError(false);
-        }
-        //history.push('/profile');
+        setTimeout(() => {
+            if(response.hasErrors) {
+                setLoader(false);
+                setLoginError(true);
+                setLoginMsg(response.message);
+            } else {
+                setLoader(false);
+                setLoginError(false);
+                history.push('/home');
+            }
+        }, 300);
     }
 
     return (
@@ -40,8 +46,9 @@ function RegistrationContainer() {
                 handleSubmit={onLoginSubmit}
                 loginData={loginData}
                 setLoginData={setLoginData}
+                loader={loader}
                 loginMsg={loginMsg}
-                loginError={{loginError}}
+                loginError={loginError}
             />
         </div>
     )

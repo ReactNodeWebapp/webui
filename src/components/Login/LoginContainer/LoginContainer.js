@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router";
 
+import * as Yup from "yup";
+import {useFormik} from "formik";
+
 import LoginForm from "../LoginForm/LoginForm";
 import { login } from '../../../api/AuthService';
 
@@ -10,45 +13,56 @@ function RegistrationContainer() {
 
     const history = useHistory();
 
-    const [ loginData, setLoginData ] = useState({
-        email: "",
-        password: ""
-    });
-
-    const [ loginMsg, setLoginMsg ] = useState('');
-
-    const [loginError, setLoginError] = useState(false);
-
     const [loader, setLoader] = useState(false);
 
-    const onLoginSubmit = async (event) => {
-        event.preventDefault();
+    const onLoginSubmit = async (values) => {
         setLoader(true);
 
-        const response = await login(loginData);
+        const response = await login({
+            email: values.email,
+            password: values.password
+        });
         setTimeout(() => {
             if(response.hasErrors) {
-                setLoader(false);
-                setLoginError(true);
-                setLoginMsg(response.message);
+                formik.setErrors(response.message.includes('Incorrect password.') ?
+                    {password: response.message} : {email: response.message}
+                );
             } else {
-                setLoader(false);
-                setLoginError(false);
-                history.push('/home');
+                //history.push('/home');
             }
+            setLoader(false);
         }, 300);
     }
+
+    const formFields = {
+        email: Yup.string()
+            .email('Incorrect e-mail format.')
+            .required('E-mail is required.'),
+        password: Yup.string()
+            .required('Password is required.')
+    }
+
+    const loginSchema = Yup.object().shape(formFields);
+
+    const formikInitValues = {
+        email: '',
+        password: ''
+    }
+
+    const formik = useFormik({
+        initialValues: formikInitValues,
+        validationSchema: loginSchema,
+        onSubmit: values => {
+            onLoginSubmit(values);
+        }
+    });
 
     return (
         <div className="form-wrapper">
             <h2 className="form-wrapper__title">Sign in to your account</h2>
             <LoginForm
-                handleSubmit={onLoginSubmit}
-                loginData={loginData}
-                setLoginData={setLoginData}
+                formik={formik}
                 loader={loader}
-                loginMsg={loginMsg}
-                loginError={loginError}
             />
         </div>
     )

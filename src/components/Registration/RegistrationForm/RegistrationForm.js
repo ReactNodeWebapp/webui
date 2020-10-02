@@ -5,91 +5,116 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../../../styles/_forms';
 import './RegistrationForm.scss';
-import Alert from "@material-ui/lab/Alert";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 function RegistrationForm(props) {
-
-    function handleUserInput(event) {
-        props.setRegistrationData({...props.registrationData, [event.target.id]: event.target.value.toString()});
-    }
-
     return (
-        <>
-            {props.loginError &&
-                <Alert
-                    variant="filled"
-                    severity="error"
-                    role="alert"
-                    className="login-alert"
-                >
-                    {props.loginMsg}
-                </Alert>
-            }
-            <form
-                className="registration-form"
-                onSubmit={props.handleSubmit}
+        <form
+            className="registration-form"
+            onSubmit={props.formik.handleSubmit}
+        >
+            <ThemeProvider theme={theme}>
+                <TextField
+                    id="firstName"
+                    name="firstName"
+                    label="First name"
+                    variant="outlined"
+                    type="text"
+                    fullWidth={true}
+                    autoComplete="name"
+                    value={props.formik.values.firstName}
+                    onChange={props.formik.handleChange}
+
+                />
+                {props.formik.errors.firstName
+                    && props.formik.touched.firstName
+                    && <span className="validation-error-msg">{props.formik.errors.firstName}</span>
+                }
+
+                <TextField
+                    id="lastName"
+                    name="lastName"
+                    label="Last name"
+                    variant="outlined"
+                    type="text"
+                    fullWidth={true}
+                    autoComplete="family-name"
+                    value={props.formik.values.lastName}
+                    onChange={props.formik.handleChange}
+
+                />
+                {props.formik.touched.lastName
+                    && props.formik.errors.lastName
+                    && <span className="validation-error-msg">{props.formik.errors.lastName}</span>
+                }
+
+                <TextField
+                    id="email"
+                    name="email"
+                    label="E-mail"
+                    variant="outlined"
+                    type="text"
+                    fullWidth={true}
+                    autoComplete="email"
+                    value={props.formik.values.email}
+                    onChange={props.formik.handleChange}
+
+                />
+                {props.formik.touched.email
+                    && props.formik.errors.email
+                    && <span className="validation-error-msg">{props.formik.errors.email}</span>
+                }
+
+                <TextField
+                    id="password"
+                    name="password"
+                    label="Password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth={true}
+                    autoComplete="new-password"
+                    value={props.formik.values.password}
+                    onChange={props.formik.handleChange}
+
+                />
+                {props.formik.touched.password
+                    && props.formik.errors.password
+                    && <span className="validation-error-msg">{props.formik.errors.password}</span>
+                }
+
+
+                <TextField
+                    id="passwordRepeat"
+                    name="passwordRepeat"
+                    label="Confirm password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth={true}
+                    autoComplete="new-password"
+                    value={props.formik.values.passwordRepeat}
+                    onChange={props.formik.handleChange}
+
+                />
+                {props.formik.touched.passwordRepeat
+                    && props.formik.errors.passwordRepeat
+                    && <span className="validation-error-msg">{props.formik.errors.passwordRepeat}</span>
+                }
+
+
+            </ThemeProvider>
+            <button
+                type="submit"
+                className="registration-form__submit-btn"
+                disabled={props.loader ? true : false}
             >
+                Sign Up
+                {props.loader &&
                 <ThemeProvider theme={theme}>
-                    <TextField
-                        id="firstName"
-                        label="First name"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="name"
-                        onChange={handleUserInput}
-                    />
-                    <TextField
-                        id="lastName"
-                        label="Last name"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="family-name"
-                        onChange={handleUserInput}
-                    />
-                    <TextField
-                        id="email"
-                        label="E-mail"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="email"
-                        onChange={handleUserInput}
-                    />
-                    <TextField
-                        id="password"
-                        label="Password"
-                        variant="outlined"
-                        type="password"
-                        fullWidth={true}
-                        autoComplete="new-password"
-                        onChange={handleUserInput}
-                    />
-                    <TextField
-                        id="passwordRepeat"
-                        label="Password repeat"
-                        variant="outlined"
-                        type="password"
-                        fullWidth={true}
-                        autoComplete="new-password"
-                    />
+                    <CircularProgress size={16} className="loader"/>
                 </ThemeProvider>
-                <button
-                    type="submit"
-                    className="registration-form__submit-btn"
-                    disabled={props.loader ? true : false}
-                >
-                    Sign Up
-                    {props.loader &&
-                    <ThemeProvider theme={theme}>
-                        <CircularProgress size={16} className="loader"/>
-                    </ThemeProvider>
-                    }
-                </button>
-            </form>
-        </>
+                }
+            </button>
+        </form>
     );
 }
 

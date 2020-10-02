@@ -8,7 +8,6 @@ export async function login(loginData) {
         }
         return response.data;
     } catch (error) {
-        console.error(error.response);
         return error.response.data;
     }
 }

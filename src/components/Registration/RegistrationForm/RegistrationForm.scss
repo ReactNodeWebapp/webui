@@ -26,10 +26,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: no-drop;
         }
     }
 
     .loader {
         margin-left: 1rem;
     }
+}
+
+.validation-error-msg {
+    display: block;
+    width: 100%;
+    color: red;
+    font-size: .85rem;
+    float: left;
+    margin-top: .25rem;
 }

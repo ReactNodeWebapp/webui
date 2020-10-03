@@ -1,19 +1,22 @@
-import React, {useState} from 'react';
-import {useHistory} from "react-router";
+import React, {useContext, useState} from 'react';
+import { useHistory } from "react-router";
 
 import * as Yup from "yup";
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 
 import LoginForm from "../LoginForm/LoginForm";
 import { login } from '../../../api/AuthService';
 
 import './LoginContainer.scss';
+import UserContext from "../../../context/UserContext";
 
 function RegistrationContainer() {
 
     const history = useHistory();
 
     const [loader, setLoader] = useState(false);
+
+    const {  changeUserStatus } = useContext(UserContext);
 
     const onLoginSubmit = async (values) => {
         setLoader(true);
@@ -28,7 +31,14 @@ function RegistrationContainer() {
                     {password: response.message} : {email: response.message}
                 );
             } else {
-                //history.push('/home');
+                localStorage.setItem("currentUser", JSON.stringify({
+                    loggedInAt: response.user.date,
+                    firstName: response.user.firstName,
+                    lastName: response.user.lastName,
+                    email: response.user.email
+                }));
+                changeUserStatus();
+                history.push('/home');
             }
             setLoader(false);
         }, 300);

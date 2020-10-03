@@ -29,7 +29,7 @@ function RegistrationContainer() {
             if(response.hasErrors) {
                 formik.setErrors({email: response.message});
             } else {
-                //history.push('/home');
+                history.push('/login');
             }
             setLoader(false);
         }, 300);

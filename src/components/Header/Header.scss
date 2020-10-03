@@ -71,4 +71,9 @@
             transition: all .25s ease-in-out
         }
     }
+
+    &__user {
+        background-color: darkgreen !important;
+        cursor: pointer;
+    }
 }

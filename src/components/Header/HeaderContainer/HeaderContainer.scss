@@ -52,6 +52,10 @@
       &:hover {
         background-color: #f9f9f9;
       }
+
+      &:focus {
+        outline: none;
+      }
     }
 
     &__signout-container {
@@ -72,6 +76,10 @@
 
       &:hover {
         background-color: #f9f9f9;
+      }
+
+      &:focus {
+        outline: none;
       }
     }
   }

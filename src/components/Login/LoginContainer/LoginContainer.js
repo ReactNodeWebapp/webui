@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import { useHistory } from "react-router";
 
+import axios from "axios";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
@@ -38,6 +39,7 @@ function RegistrationContainer() {
                     email: response.user.email
                 }));
                 changeUserStatus();
+                axios.defaults.withCredentials = true;
                 history.push('/home');
             }
             setLoader(false);

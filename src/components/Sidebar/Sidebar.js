@@ -23,7 +23,7 @@ function Sidebar() {
     }, [menu]);
     
     return (
-        <React.Fragment>
+        <>
             { menu &&
                 <div className={menu ? "sidebar active" : "sidebar"}>
                     <nav className="sidebar__nav">
@@ -61,7 +61,7 @@ function Sidebar() {
                     </div>
                 </div>
             }
-        </React.Fragment>
+        </>
     );
 }
 

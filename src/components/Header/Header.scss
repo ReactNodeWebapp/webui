@@ -9,23 +9,28 @@
     justify-content: space-between;
     padding: 0 1.5rem;
     align-items: center;
-    transition: background-color .3s cubic-bezier(0, 0, .58, 1);
+    background-color: $primary-color;
 
-    &__menu-icon {
-        color: $secondary-color;
-        transition: color .2s ease-out;
+    &__logo-container {
+        width: 165px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    &__menu-icon:hover,
-    &__menu-icon:active {
-        color: $secondary-color;
-        transition: color .2s ease-in;
+    &__logo-icon {
+        position: relative;
+        bottom: 1px;
     }
 
-    .css-e5ddaw-lineStyles-lineStyles-HamburgerIcon-HamburgerIcon-HamburgerIcon,
-    .css-17wtclu-lineStyles-lineStyles-HamburgerIcon-HamburgerIcon-HamburgerIcon,
-    .css-k0d5y0-lineStyles-lineStyles-HamburgerIcon-HamburgerIcon-HamburgerIcon {
-        color: $primary-color;
+    & a:first-child {
+        text-decoration: none;
+    }
+
+    &__logo {
+        color: white;
+        font-size: 2rem;
+        font-family: 'Poiret One', cursive;
     }
 
     &__buttons-container {

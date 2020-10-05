@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 
-import Hero from '../../components/Hero/Hero';
-import LoginContainer from '../../components/Login/LoginContainer/LoginContainer';
+import UserProfileContainer from "../../components/UserProfile/UserProfileContainer/UserProfileContainer";
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
 
-function LoginScreen() {
+function UserProfileScreen() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -13,10 +12,9 @@ function LoginScreen() {
     return (
         <>
             <HeaderContainer/>
-            <Hero height="480px"/>
-            <LoginContainer/>
+            <UserProfileContainer/>
         </>
     );
 }
 
-export default LoginScreen;
+export default UserProfileScreen;

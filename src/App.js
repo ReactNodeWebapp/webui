@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 
 import Routes from './Routes';
-import HeaderContainer from './components/Header/HeaderContainer/HeaderContainer';
 import FooterContainer from './components/Footer/FooterContainer/FooterContainer';
-import Sidebar from './components/Sidebar/Sidebar';
+import SidebarContainer from "./components/Sidebar/SidebarContainer/SidebarContainer";
 import SidebarContext from "./context/SidebarContext";
 import UserContext from "./context/UserContext";
 import {checkJwtStatus, logout} from "./api/AuthService";
@@ -45,7 +44,6 @@ function App() {
             if(!response.status) {
                 Object.keys(user).forEach(property => user[property] = '');
                 await logout();
-            } else {
             }
         })();
     });
@@ -54,8 +52,7 @@ function App() {
         <UserContext.Provider value={{user, changeUserStatus}}>
             <SidebarContext.Provider value={{menu, setMenu}}>
                 <BrowserRouter>
-                    <HeaderContainer/>
-                    <Sidebar/>
+                    <SidebarContainer/>
                     <Routes/>
                     <FooterContainer/>
                 </BrowserRouter>

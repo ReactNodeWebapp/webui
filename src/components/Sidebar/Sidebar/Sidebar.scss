@@ -1,31 +1,44 @@
-@import '../../styles/variables';
+@import 'src/styles/variables';
 
-body {
-    transition: padding .3s ease-out;
+@keyframes slide-in {
+    from {
+        right: -200px
+    }
+    to {
+        right: 0px
+    }
 }
 
 .sidebar {
     position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+    right: 0;
+    z-index: 102;
     height: 100vh;
-    transform: translateX(-100%);
     background: $dark-color;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     transition: transform .3s ease-out;
     width: 180px;
+    animation: slide-in .5s;
+    padding: 0 1rem;
 
-    &.active {
-        transform: translateX(0);
-        transition: all .3s ease-out;
+    &__close-cnt {
+        border-bottom: 1px solid white;
+        margin: 1.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__close {
+        color: white;
+        cursor: pointer;
+        margin-bottom: .5rem;
     }
 
     &__nav {
         width: 100%;
+        flex: 1;
     }
 
     &__list {
@@ -40,7 +53,8 @@ body {
         justify-content: center;
         align-items: center;
         transition: all .2s cubic-bezier(0, 0, .58, 1);
-        border-left: 4px solid transparent;
+        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;;
 
         &:hover {
             border-color: $secondary-color;
@@ -61,11 +75,24 @@ body {
             content: none;
             position: absolute;
             top: 50%;
-            left: -1px;
+            left: -.5px;
             transform: translateY(-50%);
-            border-left: 7.5px solid $secondary-color;
-            border-top: 7.5px solid transparent;
-            border-bottom: 7.5px solid transparent;
+            border-left: 5px solid $secondary-color;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        &::after {
+            content: none;
+            position: absolute;
+            top: 50%;
+            height: 0;
+            width: 0;
+            right: -.5px;
+            transform: translateY(-50%);
+            border-right: 5px solid $secondary-color;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
         }
     }
 
@@ -75,7 +102,6 @@ body {
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        padding: 0 1rem;
         color: white;
         text-align: left;
         transition: all .15s cubic-bezier(0, 0, .58, 1);

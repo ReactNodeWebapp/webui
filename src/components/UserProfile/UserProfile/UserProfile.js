@@ -4,7 +4,7 @@ import './UserProfile.scss';
 
 function UserProfile(props) {
     return (
-        <div></div>
+        <div style={{height: "1000px"}}></div>
     );
 }
 

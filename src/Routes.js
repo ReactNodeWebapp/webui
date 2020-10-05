@@ -6,7 +6,7 @@ import HomepageScreen from './screen/HomepageScreen/HomepageScreen';
 import RegisterScreen from './screen/RegisterScreen/RegisterScreen';
 import LoginScreen from "./screen/LoginScreen/LoginScreen";
 import UserContext from "./context/UserContext";
-import UserProfileContainer from "./components/UserProfile/UserProfileContainer/UserProfileContainer";
+import UserProfileScreen from "./screen/UserProfileScreen/UserProfileScreen";
 
 function Routes() {
 
@@ -17,17 +17,17 @@ function Routes() {
             <Route path="/" exact={true}>
                 <Redirect to="/home"/>
             </Route>
-            <Route path='/home' exact={true}>
+            <Route path='/home'>
                 <HomepageScreen/>
             </Route>
-            <Route path='/registration' exact={true}>
+            <Route path='/registration'>
                 <RegisterScreen/>
             </Route>
-            <Route path='/login' exact={true}>
+            <Route path='/login'>
                 <LoginScreen/>
             </Route>
-            <Route path='/:firstNameLastname' exact={true}>
-                {user.email ? <UserProfileContainer/> : <Redirect to='/home'/>}
+            <Route path='/:firstNameLastname'>
+                {user.email !== '' ? <UserProfileScreen/> : <Redirect to='/home'/>}
             </Route>
         </Switch>
     );

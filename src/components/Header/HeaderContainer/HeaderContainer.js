@@ -10,7 +10,7 @@ import {getUserProfile} from "../../../api/UserProfileService";
 
 import './HeaderContainer.scss';
 
-function HeaderContainer() {
+function HeaderContainer(props) {
 
     const history = useHistory()
 
@@ -32,7 +32,7 @@ function HeaderContainer() {
         <div className="header-wrap">
             <Header
                 profileMenu={profileMenu}
-                setProfileMenu={setProfileMenu}
+                setProfileMenu={setProfileMenu}t
             />
             {profileMenu && user.email &&
                 <div className="profile-menu">
@@ -61,7 +61,6 @@ function HeaderContainer() {
                                 await logout();
                                 changeUserStatus();
                                 setProfileMenu(!profileMenu);
-                                history.push('/home');
                             }}
                         >
                             Sign Out

@@ -1,5 +1,55 @@
+@import './src/styles/_variables';
+
 .hero {
-    background-image: linear-gradient(to bottom, rgba(17, 17, 17, 0.80), rgba(17, 17, 17, 0.85)), url('../../images/background.jpg');
-    background-size: cover;
-    background-position: center center;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    padding: 75px 5rem;
+
+    &__left-container,
+    &__right-container {
+        max-width: 50%;
+    }
+
+    &__cta {
+        text-transform: uppercase;
+        color: #b70000;
+        font-weight: 600;
+    }
+
+    &__slogan {
+        color: white;
+        font-weight: 600;
+        font-size: 3rem;
+        margin: .25rem 0 1rem;
+    }
+
+    &__summary {
+        max-width: 80%;
+        font-size: 1.15rem;
+        color: white;
+    }
+
+    &__get-started-btn {
+        padding: .75rem 3rem;
+        color: white;
+        font-size: 1rem;
+        background-color: $contrast-color;
+        border: none;
+        margin-top: 2rem;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all .25s cubic-bezier(0, 0, .58, 1);
+
+        &:hover {
+            background-color: #225ad4;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
 }

@@ -6,7 +6,7 @@
     justify-content: space-around;
     align-items: center;
     height: 100vh;
-    padding: 75px 5rem;
+    padding: 75px 6rem;
 
     &__left-container,
     &__right-container {
@@ -21,14 +21,14 @@
 
     &__slogan {
         color: white;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 3rem;
         margin: .25rem 0 1rem;
     }
 
     &__summary {
         max-width: 80%;
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         color: white;
     }
 

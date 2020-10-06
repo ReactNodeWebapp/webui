@@ -2,10 +2,10 @@ import React from 'react';
 
 import { TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import theme from '../../../styles/_forms';
 import './RegistrationForm.scss';
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 function RegistrationForm(props) {
     return (

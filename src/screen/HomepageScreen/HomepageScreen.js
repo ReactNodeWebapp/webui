@@ -10,7 +10,7 @@ function HomepageScreen() {
     return (
         <>
             <HeaderContainer/>
-            <Hero height="100vh"/>
+            <Hero/>
             <div style={{height: "1000px"}}></div>
         </>
     );

@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 
-import './Header.scss';
-import '../../styles/_variables.scss';
 import SidebarContext from "../../context/SidebarContext";
 import UserContext from "../../context/UserContext";
 
-function Header(props) {
+import './Header.scss';
+
+function Header({toggleUserProfileMenu}) {
 
     const {menu, setMenu} = useContext(SidebarContext);
 
@@ -75,26 +75,39 @@ function Header(props) {
                     </div>
                 </Link>
                 <div className="header__buttons-container">
+                    <span className="header__products">Products</span>
+                    <span className="header__about">About</span>
+                    <span className="header__contact">Contact</span>
                     {user.email ?
                         <>
                             <Avatar
                                 alt={user.firstName + " " + user.lastName}
                                 className="header__user"
-                                onClick={() => {
-                                    props.setProfileMenu(!props.profileMenu);
-                                }}
+                                onClick={toggleUserProfileMenu}
                             >
                                 {user.firstName.charAt(0)}
                             </Avatar>
-                            <MenuIcon onClick={setMenuState}/>
                         </>
                         :
                         <>
-                            <Link to="/login" className="header__btn eggshell">Sign In</Link>
-                            <Link to="/registration" className="header__btn leather">Sign Up</Link>
-                            <MenuIcon onClick={setMenuState}/>
+                            <Link
+                                to="/login"
+                                className="header__btn header__signin-btn"
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                to="/registration"
+                                className="header__btn header__signout-btn"
+                            >
+                                Sign Up
+                            </Link>
                         </>
                     }
+                    <MenuIcon
+                        className="header__menu-icon"
+                        onClick={setMenuState}
+                    />
                 </div>
             </header>
         </>

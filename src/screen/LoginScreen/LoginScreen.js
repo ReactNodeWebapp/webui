@@ -13,7 +13,6 @@ function LoginScreen() {
     return (
         <>
             <HeaderContainer/>
-            <Hero height="480px"/>
             <LoginContainer/>
         </>
     );

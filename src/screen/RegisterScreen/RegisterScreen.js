@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 
-import Hero from '../../components/Hero/Hero';
 import RegistrationContainer from '../../components/Registration/RegistrationContainer/RegistrationContainer';
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
 
@@ -13,7 +12,6 @@ function RegisterScreen() {
     return (
         <>
             <HeaderContainer/>
-            <Hero height="480px"/>
             <RegistrationContainer/>
         </>
     );

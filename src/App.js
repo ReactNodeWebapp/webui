@@ -46,7 +46,7 @@ function App() {
                 await logout();
             }
         })();
-    });
+    }, []);
 
     return (
         <UserContext.Provider value={{user, changeUserStatus}}>

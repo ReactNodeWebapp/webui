@@ -36,6 +36,7 @@
     &__buttons-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         .MuiSvgIcon-root {
             color: $secondary-color;
@@ -51,13 +52,25 @@
             }
         }
 
-        & > :not(:last-child) {
-            margin-right: 1.25rem;
+        & > * {
+            margin-right: 1rem;
         }
 
-        & > a {
-            display: flex;
-            align-items: center;
+        & > a:last-of-type{
+            margin-right: 0;
+        }
+    }
+
+    &__products,
+    &__news,
+    &__about,
+    &__contact {
+        color: white;
+        cursor: pointer;
+        transition: color .25s ease-in-out;
+
+        &:hover {
+            color: $contrast-color;
         }
     }
 
@@ -65,20 +78,48 @@
         padding: .5rem 1.5rem;
         border-radius: 4px;
         text-decoration: none;
-        border: 1px solid $secondary-color;
+        border: 1px solid white;
         background-color: transparent;
-        color: $secondary-color;
-        font-weight: 400;
+        color: white;
+        transition: all .25s ease-in-out;
 
+    }
+
+    &__signin-btn {
         &:hover {
             background-color: white;
-            color: $dark-color;
-            transition: all .25s ease-in-out
+            color: $primary-color;
+        }
+    }
+
+    &__signout-btn {
+        border-color: $contrast-color;
+        color: $contrast-color;
+
+        &:hover {
+            background-color: $contrast-color;
+            color: $primary-color;
         }
     }
 
     &__user {
-        background-color: darkgreen !important;
+        background-color: $contrast-color !important;
         cursor: pointer;
+    }
+
+    &__menu-icon {
+        display: none !important;
+        margin-right: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+
+        &__buttons-container > * {
+            display: none;
+        }
+
+        &__menu-icon {
+            display: inline-block !important;
+        }
     }
 }

@@ -12,9 +12,7 @@
     background-color: $primary-color;
 
     &__logo-container {
-        width: 165px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
     }
 
@@ -31,6 +29,8 @@
         color: white;
         font-size: 2rem;
         font-family: 'Poiret One', cursive;
+        letter-spacing: 8px;
+        margin-left: .5rem;
     }
 
     &__buttons-container {

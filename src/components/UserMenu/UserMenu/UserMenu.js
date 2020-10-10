@@ -23,6 +23,10 @@ function UserMenu({
     const handleClickOutside = (event) => {
         if (onClickOutside.current && !onClickOutside.current.contains(event.target)) {
             toggleUserProfileMenu();
+            document
+                .getElementsByClassName('header__arrow-down')[0]
+                .classList
+                .remove('active');
         }
     };
 

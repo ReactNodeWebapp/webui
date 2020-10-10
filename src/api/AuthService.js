@@ -10,9 +10,9 @@ export async function login(loginData) {
 }
 
 export async function logout() {
-    localStorage.removeItem("currentUser");
     try {
         const response = await axios.post("users/logout");
+        localStorage.removeItem("currentUser");
         return response.data;
     } catch (error) {
         return error.response.data;

@@ -1,4 +1,4 @@
-@import '../../styles/_variables';
+@import 'src/styles/variables';
 
 .header {
     position: fixed;
@@ -52,25 +52,24 @@
             }
         }
 
-        & > * {
+        & > *:not(.header__user-wrapper) {
             margin-right: 1rem;
         }
 
-        & > a:last-of-type{
-            margin-right: 0;
-        }
+
     }
 
     &__products,
     &__news,
     &__about,
     &__contact {
-        color: white;
+        color: rgba(255, 255, 255, 0.5);
         cursor: pointer;
-        transition: color .25s ease-in-out;
+        transition: color .2s ease-in-out;
 
-        &:hover {
-            color: $contrast-color;
+        &:hover,
+        &:active {
+            color: white;
         }
     }
 
@@ -102,24 +101,55 @@
         }
     }
 
+    &__user-wrapper {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
     &__user {
         background-color: $contrast-color !important;
-        cursor: pointer;
+        margin-right: .5rem;
+    }
+
+    &__arrow-down {
+        border: solid rgba(255, 255, 255, 0.5);
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 2px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transition: transform .2s ease-in-out;
+
+        &.active {
+            transform: rotate(-135deg);
+        }
     }
 
     &__menu-icon {
         display: none !important;
         margin-right: 0;
+        color: rgba(255, 255, 255, 0.5) !important;
+
+        & path {
+            transition: color .25s ease-in-out;
+        }
+
+        &:hover path {
+            color: white;
+        }
     }
 
     @media screen and (max-width: 900px) {
 
-        &__buttons-container > * {
+        &__buttons-container > *:not(.header__user-wrapper) {
             display: none;
         }
 
         &__menu-icon {
             display: inline-block !important;
+            margin-right: 0 !important;
+            margin-left: 1rem;
         }
     }
 }

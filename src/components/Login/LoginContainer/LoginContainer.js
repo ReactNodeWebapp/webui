@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import { useHistory } from "react-router";
 
 import axios from "axios";
 import * as Yup from "yup";
@@ -12,8 +11,6 @@ import './LoginContainer.scss';
 import UserContext from "../../../context/UserContext";
 
 function RegistrationContainer() {
-
-    const history = useHistory();
 
     const [loader, setLoader] = useState(false);
 
@@ -33,6 +30,7 @@ function RegistrationContainer() {
                 );
             } else {
                 localStorage.setItem("currentUser", JSON.stringify({
+                    id: response.user._id,
                     loggedInAt: response.user.date,
                     firstName: response.user.firstName,
                     lastName: response.user.lastName,
@@ -40,7 +38,7 @@ function RegistrationContainer() {
                 }));
                 changeUserStatus();
                 axios.defaults.withCredentials = true;
-                history.push('/home');
+                window.location.assign('/home');
             }
             setLoader(false);
         }, 300);
@@ -64,8 +62,8 @@ function RegistrationContainer() {
     const formik = useFormik({
         initialValues: formikInitValues,
         validationSchema: loginSchema,
-        onSubmit: values => {
-            onLoginSubmit(values);
+        onSubmit: async values => {
+            await onLoginSubmit(values);
         }
     });
 

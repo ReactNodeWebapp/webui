@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import {useHistory} from "react-router";
 
 import UserContext from "../../../context/UserContext";
 import {getUserProfile} from "../../../api/UserProfileService";
@@ -10,8 +9,6 @@ function UserMenuContainer({
     toggleUserProfileMenu
 }) {
 
-    const history = useHistory();
-
     const {user} = useContext(UserContext);
 
     const showUserProfile = async () => {
@@ -20,7 +17,7 @@ function UserMenuContainer({
         if (response.hasErrors) {
             Object.keys(user).forEach(property => user[property] = '');
         } else {
-            history.push(`/${user.firstName + user.lastName}`);
+            window.location.assign(`/${user.firstName + user.lastName}`);
         }
     }
 

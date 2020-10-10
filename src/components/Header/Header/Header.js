@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
-import {Link} from 'react-router-dom';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 
-import SidebarContext from "../../context/SidebarContext";
-import UserContext from "../../context/UserContext";
+import SidebarContext from "../../../context/SidebarContext";
+import UserContext from "../../../context/UserContext";
 
 import './Header.scss';
 
@@ -34,7 +33,7 @@ function Header({toggleUserProfileMenu}) {
     return (
         <>
             <header className="header">
-                <Link to='/'>
+                <a href='/'>
                     <div className="header__logo-container">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -73,35 +72,44 @@ function Header({toggleUserProfileMenu}) {
                         </svg>
                         <span className="header__logo">Wilkinson</span>
                     </div>
-                </Link>
+                </a>
                 <div className="header__buttons-container">
                     <span className="header__products">Products</span>
                     <span className="header__about">About</span>
                     <span className="header__contact">Contact</span>
                     {user.email ?
-                        <>
+                        <div
+                            className="header__user-wrapper"
+                            onClick={() => {
+                                toggleUserProfileMenu();
+                                document
+                                    .getElementsByClassName('header__arrow-down')[0]
+                                    .classList
+                                    .toggle('active');
+                            }}
+                        >
                             <Avatar
                                 alt={user.firstName + " " + user.lastName}
                                 className="header__user"
-                                onClick={toggleUserProfileMenu}
                             >
                                 {user.firstName.charAt(0)}
                             </Avatar>
-                        </>
+                            <i className="header__arrow-down"></i>
+                        </div>
                         :
                         <>
-                            <Link
-                                to="/login"
+                            <a
+                                href="/login"
                                 className="header__btn header__signin-btn"
                             >
                                 Sign In
-                            </Link>
-                            <Link
-                                to="/registration"
+                            </a>
+                            <a
+                                href="/registration"
                                 className="header__btn header__signout-btn"
                             >
                                 Sign Up
-                            </Link>
+                            </a>
                         </>
                     }
                     <MenuIcon

@@ -2,7 +2,7 @@ import React from 'react';
 
 import UserProfile from "../UserProfile/UserProfile";
 
-function UserProfileContainer(props) {
+function UserProfileContainer() {
     return (
         <UserProfile/>
     );

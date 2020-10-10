@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useHistory} from "react-router";
 
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -10,8 +9,6 @@ import { register } from '../../../api/RegistrationService';
 import './RegistrationContainer.scss';
 
 function RegistrationContainer() {
-
-    const history = useHistory();
 
     const [loader, setLoader] = useState(false);
 
@@ -29,7 +26,7 @@ function RegistrationContainer() {
             if(response.hasErrors) {
                 formik.setErrors({email: response.message});
             } else {
-                history.push('/login');
+                window.location.assign('/login');
             }
             setLoader(false);
         }, 300);

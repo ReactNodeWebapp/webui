@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
 
 import Clear from '@material-ui/icons/Clear';
 import RedeemIcon from '@material-ui/icons/Redeem';
@@ -88,9 +87,9 @@ function Sidebar() {
                         </div>}
                     </nav>
                     <div className="sidebar__bottom-buttons">
-                        <Link className="sidebar__home-icon" to="/home">
+                        <a className="sidebar__home-icon" href="/">
                             <HomeIcon className="sidebar__icon" onClick={setMenuState}/>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             }

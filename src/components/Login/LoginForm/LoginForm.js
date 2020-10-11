@@ -49,7 +49,7 @@ function LoginForm(props) {
             </ThemeProvider>
             <button
                 type="submit"
-                className="login-form__submit-btn"
+                className="form-wrapper__submit-btn"
                 disabled={props.loader ? true : false}
             >
                 Sign In

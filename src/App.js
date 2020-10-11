@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 
-import axios from "axios";
-
 import Routes from './Routes';
 import FooterContainer from './components/Footer/FooterContainer/FooterContainer';
 import SidebarContainer from "./components/Sidebar/SidebarContainer/SidebarContainer";

@@ -104,7 +104,7 @@ function RegistrationForm(props) {
             </ThemeProvider>
             <button
                 type="submit"
-                className="registration-form__submit-btn"
+                className="form-wrapper__submit-btn"
                 disabled={props.loader ? true : false}
             >
                 Sign Up

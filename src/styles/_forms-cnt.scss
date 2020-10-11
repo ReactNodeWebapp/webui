@@ -22,6 +22,30 @@
     min-width: 340px;
   }
 
+  &__submit-btn {
+    width: 100%;
+    height: 56px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: $primary-color;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all .2s cubic-bezier(0, 0, .58, 1);
+
+    &:disabled {
+      background-color: white;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: no-drop;
+    }
+  }
+
   & div.MuiFormControl-root {
     margin-top: 1rem;
   }
@@ -49,4 +73,18 @@
       height: auto;
     }
   }
+
+  .loader {
+    margin-left: 1rem;
+  }
+
+  .validation-error-msg {
+    display: block;
+    width: 100%;
+    color: red;
+    font-size: .85rem;
+    float: left;
+    margin-top: .25rem;
+  }
+
 }

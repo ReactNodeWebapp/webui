@@ -3,7 +3,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 
 import Avatar from "@material-ui/core/Avatar";
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import {TextField} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -21,13 +20,13 @@ function UserProfile() {
 
     const [city, setCity] = useState('');
 
+    // add location from database or by geolocation
+
     useEffect(() => {
         const nav = navigator.geolocation?.getCurrentPosition(async (position) => {
             const geocode = await axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LOCATION_TOKEN}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`);
             setCountry(geocode.data.address.country);
             setCity(geocode.data.address.city);
-        }, () => {
-            return '';
         });
     });
 
@@ -42,56 +41,70 @@ function UserProfile() {
                 </Avatar>
                 <div className="profile-data__user-name-cnt">
                     <p className="profile-data__user-name">{user.firstName} {user.lastName}</p>
-                    <div>
-                        <LocationOnIcon/>
+                    <div className="profile-data__user-location-container">
                         <span className="profile-data__user-location">{city}, {country}</span>
                     </div>
                 </div>
             </div>
             <form
-                className="profile-data__change-data-form"
+                className="profile-data__change-data-form-container"
             >
-                <ThemeProvider theme={theme}>
-                    <TextField
-                        id="firstName"
-                        name="firstName"
-                        label="First name"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="name"
-                        value={user.firstName}
+                <div className="profile-data__change-data-form">
+                    <ThemeProvider theme={theme}>
+                        <TextField
+                            id="firstName"
+                            name="firstName"
+                            label="First name"
+                            variant="outlined"
+                            type="text"
+                            fullWidth={true}
+                            autoComplete="name"
+                            value={user.firstName}
 
-                    />
+                        />
 
-                    <TextField
-                        id="lastName"
-                        name="lastName"
-                        label="Last name"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="family-name"
-                        value={user.lastName}
+                        <TextField
+                            id="lastName"
+                            name="lastName"
+                            label="Last name"
+                            variant="outlined"
+                            type="text"
+                            fullWidth={true}
+                            autoComplete="family-name"
+                            value={user.lastName}
 
-                    />
+                        />
 
-                    <TextField
-                        id="email"
-                        name="email"
-                        label="E-mail"
-                        variant="outlined"
-                        type="text"
-                        fullWidth={true}
-                        autoComplete="email"
-                        value={user.email}
+                        <TextField
+                            id="email"
+                            name="email"
+                            label="E-mail"
+                            variant="outlined"
+                            type="text"
+                            fullWidth={true}
+                            autoComplete="email"
+                            value={user.email}
 
-                    />
+                        />
 
-                </ThemeProvider>
+                        <TextField
+                            id="location"
+                            name="location"
+                            label="Location"
+                            variant="outlined"
+                            type="text"
+                            fullWidth={true}
+                            autoComplete="email"
+                            value={`${city}, ${country}`}
+
+                        />
+
+                    </ThemeProvider>
+                </div>
                 <button
                     type="submit"
-                    className="registration-form__submit-btn"
+                    className="form-wrapper__submit-btn"
+                    style={{width: "40%"}}
                 >
                     Save Changes
                 </button>

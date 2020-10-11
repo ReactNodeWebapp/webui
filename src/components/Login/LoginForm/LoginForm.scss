@@ -1,42 +1,7 @@
-@import '../../../styles/_variables';
-
-.login-alert {
-  width: 100%;
-  border-radius: 4px;
-}
-
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  &__submit-btn {
-    width: 100%;
-    height: 56px;
-    border: none;
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
-    background-color: $primary-color;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 2rem;
-    transition: all .2s cubic-bezier(0, 0, .58, 1);
-
-    &:disabled {
-      background-color: white;
-      border: 1px solid $primary-color;
-      color: $primary-color;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: no-drop;
-    }
-  }
-
-  .loader {
-    margin-left: 1rem;
-  }
 }

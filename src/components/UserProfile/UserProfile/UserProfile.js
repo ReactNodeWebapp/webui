@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 
 import axios from "axios";
 
@@ -12,23 +12,41 @@ import UserContext from "../../../context/UserContext";
 import './UserProfile.scss';
 import theme from "../../../styles/_forms";
 
-function UserProfile() {
+function UserProfile({
+    location,
+    setLocation,
+    formik,
+    loader
+}) {
 
     const {user} = useContext(UserContext);
 
-    const [country, setCountry] = useState('');
-
-    const [city, setCity] = useState('');
-
-    // add location from database or by geolocation
-
     useEffect(() => {
-        const nav = navigator.geolocation?.getCurrentPosition(async (position) => {
-            const geocode = await axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LOCATION_TOKEN}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`);
-            setCountry(geocode.data.address.country);
-            setCity(geocode.data.address.city);
-        });
+        getGeolocation();
     });
+
+    const getGeolocation = () => {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const geocode = await axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LOCATION_TOKEN}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`);
+                setLocation(`${geocode.data.address.city}, ${geocode.data.address.country}`);
+            }, (error) => {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        setLocation('User denied the request for Geolocation.');
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        setLocation('Location information is unavailable.');
+                        break;
+                    default:
+                        setLocation('Retrieving user location an unknown error occurred.');
+                        break;
+                }
+            });
+        } else {
+            setLocation('Geolocation is not supported by this browser.');
+        }
+    }
 
     return (
         <div className="profile-data">
@@ -42,14 +60,14 @@ function UserProfile() {
                 <div className="profile-data__user-name-cnt">
                     <p className="profile-data__user-name">{user.firstName} {user.lastName}</p>
                     <div className="profile-data__user-location-container">
-                        <span className="profile-data__user-location">{city}, {country}</span>
+                        <span className="profile-data__user-location">{location}</span>
                     </div>
                 </div>
             </div>
             <form
-                className="profile-data__change-data-form-container"
+                className="profile-data__change-data-form"
+                onSubmit={formik.handleSubmit}
             >
-                <div className="profile-data__change-data-form">
                     <ThemeProvider theme={theme}>
                         <TextField
                             id="firstName"
@@ -59,9 +77,13 @@ function UserProfile() {
                             type="text"
                             fullWidth={true}
                             autoComplete="name"
-                            value={user.firstName}
-
+                            value={formik.values.firstName || ''}
+                            onChange={formik.handleChange}
                         />
+                        {formik.errors.firstName
+                            && formik.touched.firstName
+                            && <span className="validation-error-msg">{formik.errors.firstName}</span>
+                        }
 
                         <TextField
                             id="lastName"
@@ -71,9 +93,13 @@ function UserProfile() {
                             type="text"
                             fullWidth={true}
                             autoComplete="family-name"
-                            value={user.lastName}
-
+                            value={formik.values.lastName || ''}
+                            onChange={formik.handleChange}
                         />
+                        {formik.errors.firstName
+                            && formik.touched.firstName
+                            && <span className="validation-error-msg">{formik.errors.firstName}</span>
+                        }
 
                         <TextField
                             id="email"
@@ -83,31 +109,44 @@ function UserProfile() {
                             type="text"
                             fullWidth={true}
                             autoComplete="email"
-                            value={user.email}
-
+                            value={formik.values.email || ''}
+                            onChange={formik.handleChange}
                         />
+                        {formik.errors.firstName
+                            && formik.touched.firstName
+                            && <span className="validation-error-msg">{formik.errors.firstName}</span>
+                        }
 
                         <TextField
-                            id="location"
-                            name="location"
-                            label="Location"
+                            id="telephoneNumber"
+                            name="telephoneNumber"
+                            label="Telephone Number"
                             variant="outlined"
                             type="text"
                             fullWidth={true}
-                            autoComplete="email"
-                            value={`${city}, ${country}`}
-
+                            autoComplete="tel"
+                            value={formik.values.telephoneNumber || ''}
+                            onChange={formik.handleChange}
                         />
+                        {formik.errors.firstName
+                            && formik.touched.firstName
+                            && <span className="validation-error-msg">{formik.errors.firstName}</span>
+                        }
 
                     </ThemeProvider>
-                </div>
-                <button
-                    type="submit"
-                    className="form-wrapper__submit-btn"
-                    style={{width: "40%"}}
-                >
-                    Save Changes
-                </button>
+                    <button
+                        type="submit"
+                        className="form-wrapper__submit-btn"
+                        style={{marginTop: ".5rem"}}
+                        disabled={loader ? true : false}
+                    >
+                        Save Changes
+                        {loader &&
+                            <ThemeProvider theme={theme}>
+                                <CircularProgress size={16} className="form-wrapper__loader"/>
+                            </ThemeProvider>
+                        }
+                    </button>
             </form>
         </div>
     );

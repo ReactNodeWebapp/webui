@@ -50,6 +50,10 @@
     margin-top: 1rem;
   }
 
+  &__loader {
+    margin-left: 1rem;
+  }
+
   @media screen and (max-width: 900px) {
     & {
       padding-top: 75px;
@@ -72,10 +76,6 @@
       width: 80%;
       height: auto;
     }
-  }
-
-  .loader {
-    margin-left: 1rem;
   }
 
   .validation-error-msg {

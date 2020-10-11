@@ -25,7 +25,8 @@ function App() {
             loggedInAt: '',
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
+            telephoneNumber: ''
         });
     }
 

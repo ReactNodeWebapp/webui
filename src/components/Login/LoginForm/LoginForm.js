@@ -55,7 +55,7 @@ function LoginForm(props) {
                 Sign In
                 {props.loader &&
                     <ThemeProvider theme={theme}>
-                        <CircularProgress size={16} className="loader"/>
+                        <CircularProgress size={16} className="form-wrapper__loader"/>
                     </ThemeProvider>
                 }
             </button>

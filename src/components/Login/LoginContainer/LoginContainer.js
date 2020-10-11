@@ -34,7 +34,8 @@ function RegistrationContainer() {
                     loggedInAt: response.user.date,
                     firstName: response.user.firstName,
                     lastName: response.user.lastName,
-                    email: response.user.email
+                    email: response.user.email,
+                    telephoneNumber: response.user.telephoneNumber || ''
                 }));
                 changeUserStatus();
                 axios.defaults.withCredentials = true;

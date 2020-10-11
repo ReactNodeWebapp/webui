@@ -109,9 +109,9 @@ function RegistrationForm(props) {
             >
                 Sign Up
                 {props.loader &&
-                <ThemeProvider theme={theme}>
-                    <CircularProgress size={16} className="loader"/>
-                </ThemeProvider>
+                    <ThemeProvider theme={theme}>
+                        <CircularProgress size={16} className="form-wrapper__loader"/>
+                    </ThemeProvider>
                 }
             </button>
         </form>

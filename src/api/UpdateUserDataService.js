@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export async function register(updateData) {
+export async function updateUserData(updateData) {
     try {
-        const userId = localStorage.getItem('currentUser').id;
+        const userId = JSON.parse(localStorage.getItem('currentUser')).id;
+        console.log(userId)
         const response = await axios.put(`users/${userId}`, updateData);
         return response.data;
     } catch (error) {

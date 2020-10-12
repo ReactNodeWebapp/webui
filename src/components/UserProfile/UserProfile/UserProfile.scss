@@ -14,6 +14,24 @@
     height: 100px !important;
     font-size: 3rem !important;
     background-color: $contrast-color !important;
+    position: relative;
+    overflow: unset !important;
+  }
+
+  &__edit-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $primary-color;
+    border-radius: 50%;
+    border: 3.5px solid white;
+    font-size: 2rem !important;
+    padding: .15rem;
+    cursor: pointer;
+  }
+
+  &__image-chooser {
+    display: none;
   }
 
   &__user-name-cnt {

@@ -6,6 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import {TextField} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import EditIcon from '@material-ui/icons/Edit';
 
 import UserContext from "../../../context/UserContext";
 
@@ -56,6 +57,18 @@ function UserProfile({
                     className="profile-data__user-icon"
                 >
                     {String(user.firstName).charAt(0)}
+                    <label htmlFor="image-chooser">
+                        <EditIcon
+                            className="profile-data__edit-image"
+                            type="file"
+                        />
+                    </label>
+                    <input
+                        id="image-chooser"
+                        className="profile-data__image-chooser"
+                        type="file"
+                        onChange={console.log('make oncgange function')}
+                    />
                 </Avatar>
                 <div className="profile-data__user-name-cnt">
                     <p className="profile-data__user-name">{user.firstName} {user.lastName}</p>

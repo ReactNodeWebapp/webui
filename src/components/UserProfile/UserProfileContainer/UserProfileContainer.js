@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import * as Yup from "yup";
 import {useFormik} from "formik";
@@ -6,6 +6,7 @@ import {useFormik} from "formik";
 import UserProfile from "../UserProfile/UserProfile";
 import {updateUserData} from "../../../api/UpdateUserDataService";
 import UserContext from "../../../context/UserContext";
+import {getUserImage, updateUserImage} from "../../../api/UserImageService";
 
 function UserProfileContainer() {
 
@@ -14,6 +15,20 @@ function UserProfileContainer() {
     const [location, setLocation] = useState('');
 
     const [loader, setLoader] = useState(false);
+
+    const [userImageUrl, setUserImage] = useState('');
+
+    const onImageChange = async (event) => {
+        const image = event.target.files[0];
+        if (image) {
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onloadend = async () => {
+               const imageUrl = await updateUserImage(reader.result);
+               setUserImage(imageUrl);
+            };
+        }
+    }
 
     const onDataEditSubmit = async (values) => {
         setLoader(true);
@@ -80,6 +95,14 @@ function UserProfileContainer() {
         }
     });
 
+    const putUserImage = async () => {
+        const imageUrl = await getUserImage();
+        setUserImage(imageUrl);
+    }
+
+    useEffect(() => {
+        putUserImage();
+    }, []);
 
     return (
         <UserProfile
@@ -87,6 +110,8 @@ function UserProfileContainer() {
             setLocation={setLocation}
             formik={formik}
             loader={loader}
+            onImageChange={onImageChange}
+            userImageUrl={userImageUrl}
         />
     );
 }

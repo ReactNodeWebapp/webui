@@ -17,7 +17,9 @@ function UserProfile({
     location,
     setLocation,
     formik,
-    loader
+    loader,
+    onImageChange,
+    userImageUrl
 }) {
 
     const {user} = useContext(UserContext);
@@ -52,11 +54,14 @@ function UserProfile({
     return (
         <div className="profile-data">
             <div className="profile-data__user">
-                <Avatar
-                    alt={user.firstName + " " + user.lastName}
-                    className="profile-data__user-icon"
-                >
-                    {String(user.firstName).charAt(0)}
+                <div className="profile-data__user-image-wrapper">
+                    <Avatar
+                        src={userImageUrl}
+                        alt={user.firstName + " " + user.lastName}
+                        className="profile-data__user-icon"
+                    >
+                        {String(user.firstName).charAt(0)}
+                    </Avatar>
                     <label htmlFor="image-chooser">
                         <EditIcon
                             className="profile-data__edit-image"
@@ -67,9 +72,9 @@ function UserProfile({
                         id="image-chooser"
                         className="profile-data__image-chooser"
                         type="file"
-                        onChange={console.log('make oncgange function')}
+                        onChange={onImageChange}
                     />
-                </Avatar>
+                </div>
                 <div className="profile-data__user-name-cnt">
                     <p className="profile-data__user-name">{user.firstName} {user.lastName}</p>
                     <div className="profile-data__user-location-container">

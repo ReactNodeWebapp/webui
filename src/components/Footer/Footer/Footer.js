@@ -19,7 +19,7 @@ function Footer() {
                 <div className="footer__top-container">
                     <div className="footer__logo-wrapper">
                         <h4 className="footer__logo">Wilkinson</h4>
-                        <p className="footer__slogan">Unlimited Transactions with zero fees.</p>
+                        <p className="footer__slogan">Unlimited transactions with zero fees.</p>
                     </div>
                     <div className="footer__list-wrapper">
                         <ul className="footer__column">

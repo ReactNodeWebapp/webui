@@ -9,13 +9,15 @@
     align-items: center;
   }
 
+  &__user-image-wrapper {
+    position: relative;
+  }
+
   &__user-icon {
     width: 100px !important;
     height: 100px !important;
     font-size: 3rem !important;
     background-color: $contrast-color !important;
-    position: relative;
-    overflow: unset !important;
   }
 
   &__edit-image {
@@ -28,6 +30,11 @@
     font-size: 2rem !important;
     padding: .15rem;
     cursor: pointer;
+    color: white;
+
+    &:after {
+
+    }
   }
 
   &__image-chooser {

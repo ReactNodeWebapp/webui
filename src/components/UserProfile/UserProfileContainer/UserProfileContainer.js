@@ -23,9 +23,13 @@ function UserProfileContainer() {
         if (image) {
             const reader = new FileReader();
             reader.readAsDataURL(image);
-            reader.onloadend = async () => {
-               const imageUrl = await updateUserImage(reader.result);
-               setUserImage(imageUrl);
+            reader.onload = async () => {
+               if(reader.result) {
+                   const imageUrl = await updateUserImage(reader.result);
+                   setUserImage(imageUrl);
+               } else {
+                   console.error('Error converting image to base64')
+               }
             };
         }
     }

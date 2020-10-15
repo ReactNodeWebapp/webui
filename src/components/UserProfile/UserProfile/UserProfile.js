@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import axios from "axios";
 
@@ -7,6 +7,7 @@ import {TextField} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import EditIcon from '@material-ui/icons/Edit';
+import {shallowEqual} from 'recompose';
 
 import UserContext from "../../../context/UserContext";
 
@@ -24,9 +25,15 @@ function UserProfile({
 
     const {user} = useContext(UserContext);
 
+    const [disabled, setDisabled] = useState(true);
+
     useEffect(() => {
         getGeolocation();
     });
+
+    useEffect(() => {
+        setDisabled(shallowEqual(formik.initialValues, formik.values));
+    }, [formik.values]);
 
     const getGeolocation = () => {
         if(navigator.geolocation) {
@@ -156,7 +163,7 @@ function UserProfile({
                         type="submit"
                         className="form-wrapper__submit-btn"
                         style={{marginTop: ".5rem"}}
-                        disabled={loader ? true : false}
+                        disabled={loader || disabled}
                     >
                         Save Changes
                         {loader &&

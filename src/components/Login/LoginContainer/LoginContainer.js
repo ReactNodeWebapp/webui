@@ -41,7 +41,6 @@ function RegistrationContainer() {
                 axios.defaults.withCredentials = true;
                 window.location.assign('/home');
             }
-            setLoader(false);
         }, 300);
     }
 

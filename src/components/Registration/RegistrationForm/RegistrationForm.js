@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -8,6 +8,15 @@ import theme from '../../../styles/_forms';
 import './RegistrationForm.scss';
 
 function RegistrationForm(props) {
+
+    const [disabled, setDisabled] = useState(true);
+
+    useEffect(() => {
+        setDisabled(Object.values(props.formik.values).some(value => {
+            return value === '';
+        }))
+    }, [props.formik.values]);
+
     return (
         <form
             className="registration-form"
@@ -105,7 +114,7 @@ function RegistrationForm(props) {
             <button
                 type="submit"
                 className="form-wrapper__submit-btn"
-                disabled={props.loader ? true : false}
+                disabled={props.loader || disabled}
             >
                 Sign Up
                 {props.loader &&

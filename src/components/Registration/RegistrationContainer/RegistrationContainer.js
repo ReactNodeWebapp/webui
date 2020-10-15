@@ -28,7 +28,6 @@ function RegistrationContainer() {
             } else {
                 window.location.assign('/login');
             }
-            setLoader(false);
         }, 300);
     }
 

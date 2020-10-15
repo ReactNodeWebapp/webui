@@ -69,11 +69,10 @@
 
   &__change-data-form {
     margin-top: 3rem;
-    width: 100%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-column-gap: 4rem;
     grid-row-gap: 1.5rem;
-
   }
 }

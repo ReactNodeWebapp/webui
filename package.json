@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-simple-dropdown": "^3.2.3",
+    "recompose": "^0.30.0",
     "yup": "^0.29.3"
   },
   "scripts": {

@@ -56,7 +56,6 @@ function App() {
                 <BrowserRouter>
                     <SidebarContainer/>
                     <Routes/>
-                    <FooterContainer/>
                 </BrowserRouter>
             </SidebarContext.Provider>
         </UserContext.Provider>

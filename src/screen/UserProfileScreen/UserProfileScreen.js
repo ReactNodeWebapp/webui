@@ -1,9 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import UserProfileContainer from "../../components/UserProfile/UserProfileContainer/UserProfileContainer";
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
+import UserProfileSidebarContainer from "../../components/UserProfileSidebar/UserProfileSidebarContainer/UserProfileSidebarContainer";
+import {USER_INFO} from "../../constants/UserProfileNavItemConstants";
 
 function UserProfileScreen() {
+
+    const [activeNavOption, setActiveNavOption] = useState(USER_INFO);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -11,8 +15,14 @@ function UserProfileScreen() {
 
     return (
         <>
+            <UserProfileSidebarContainer
+                activeNavOption={activeNavOption}
+                setActiveNavOption={setActiveNavOption}
+            />
             <HeaderContainer/>
-            <UserProfileContainer/>
+            <UserProfileContainer
+                activeNavOption={activeNavOption}
+            />
         </>
     );
 }

@@ -28,6 +28,7 @@ function RegistrationContainer() {
                 formik.setErrors(response.message.includes('Incorrect password.') ?
                     {password: response.message} : {email: response.message}
                 );
+                setLoader(false);
             } else {
                 localStorage.setItem("currentUser", JSON.stringify({
                     id: response.user._id,

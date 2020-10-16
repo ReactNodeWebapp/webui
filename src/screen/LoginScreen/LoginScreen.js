@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 
 import LoginContainer from '../../components/Login/LoginContainer/LoginContainer';
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
+import FooterContainer from "../../components/Footer/FooterContainer/FooterContainer";
 
 function LoginScreen() {
 
@@ -13,6 +14,7 @@ function LoginScreen() {
         <>
             <HeaderContainer/>
             <LoginContainer/>
+            <FooterContainer/>
         </>
     );
 }

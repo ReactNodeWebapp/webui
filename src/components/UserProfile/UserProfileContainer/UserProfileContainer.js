@@ -3,12 +3,15 @@ import React, {useContext, useEffect, useState} from 'react';
 import * as Yup from "yup";
 import {useFormik} from "formik";
 
-import UserProfile from "../UserProfile/UserProfile";
+import UserInfo from "../UserInfo/UserInfo";
 import {updateUserData} from "../../../api/UpdateUserDataService";
 import UserContext from "../../../context/UserContext";
 import {getUserImage, updateUserImage} from "../../../api/UserImageService";
+import {USER_INFO, NOTIFICATIONS, SETTINGS, WATCHLIST, FAVORITES} from "../../../constants/UserProfileNavItemConstants";
 
-function UserProfileContainer() {
+import './UserProfileContainer.scss';
+
+function UserProfileContainer(props) {
 
     const {user} = useContext(UserContext);
 
@@ -109,14 +112,17 @@ function UserProfileContainer() {
     }, []);
 
     return (
-        <UserProfile
-            location={location}
-            setLocation={setLocation}
-            formik={formik}
-            loader={loader}
-            onImageChange={onImageChange}
-            userImageUrl={userImageUrl}
-        />
+        <div className="user-profile-right-container">
+            {props.activeNavOption === USER_INFO &&
+                <UserInfo
+                    location={location}
+                    setLocation={setLocation}
+                    formik={formik}
+                    loader={loader}
+                    onImageChange={onImageChange}
+                    userImageUrl={userImageUrl}
+                />}
+        </div>
     );
 }
 

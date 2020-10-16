@@ -1,0 +1,66 @@
+@import 'src/styles/variables';
+
+.user-profile-sidebar {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  padding: 2.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: calc(100% - 75px);
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .08);
+  overflow-y: auto;
+
+  &__title {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    color: $primary-color;
+  }
+
+  &__nav-items {
+    list-style-type: none;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: .9rem 4rem .9rem 1.5rem;
+    &:hover svg,
+    &:hover .user-profile-sidebar__nav-item-text {
+      color: $primary-color;
+      transition: color .2s ease-in-out;
+    }
+
+    &:hover {
+      border-right: 5px solid rgba(40, 108, 255, .2);
+    }
+
+    & svg {
+      color: rgba(0, 0, 0, .5);
+    }
+
+    &.active {
+      border-right: 5px solid $contrast-color;
+      background-color: rgba(40, 108, 255, .05);
+
+      & svg,
+      & .user-profile-sidebar__nav-item-text {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__nav-item-text {
+    margin-left: .75rem;
+    flex: 1;
+    font-size: .9rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .5);
+    display: inline-block;
+    width: 85px;
+  }
+}

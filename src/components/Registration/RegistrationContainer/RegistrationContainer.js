@@ -25,6 +25,7 @@ function RegistrationContainer() {
         setTimeout(() => {
             if(response.hasErrors) {
                 formik.setErrors({email: response.message});
+                setLoader(false);
             } else {
                 window.location.assign('/login');
             }

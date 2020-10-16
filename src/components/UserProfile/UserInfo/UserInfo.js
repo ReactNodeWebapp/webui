@@ -11,10 +11,10 @@ import {shallowEqual} from 'recompose';
 
 import UserContext from "../../../context/UserContext";
 
-import './UserProfile.scss';
+import './UserInfo.scss';
 import theme from "../../../styles/_forms";
 
-function UserProfile({
+function UserInfo({
     location,
     setLocation,
     formik,
@@ -177,4 +177,4 @@ function UserProfile({
     );
 }
 
-export default UserProfile;
+export default UserInfo;

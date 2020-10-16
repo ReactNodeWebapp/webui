@@ -4,6 +4,7 @@ import Hero from '../../components/Hero/Hero';
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
 
 import './HomepageScreen.scss';
+import FooterContainer from "../../components/Footer/FooterContainer/FooterContainer";
 
 function HomepageScreen() {
 
@@ -11,7 +12,7 @@ function HomepageScreen() {
         <>
             <HeaderContainer/>
             <Hero/>
-            <div style={{height: "1000px"}}></div>
+            <FooterContainer/>
         </>
     );
 }

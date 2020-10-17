@@ -33,6 +33,7 @@ function RegistrationForm(props) {
                     autoComplete="name"
                     value={props.formik.values.firstName}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
 
                 />
                 {props.formik.errors.firstName
@@ -50,6 +51,7 @@ function RegistrationForm(props) {
                     autoComplete="family-name"
                     value={props.formik.values.lastName}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
 
                 />
                 {props.formik.touched.lastName
@@ -67,6 +69,7 @@ function RegistrationForm(props) {
                     autoComplete="email"
                     value={props.formik.values.email}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
 
                 />
                 {props.formik.touched.email
@@ -84,13 +87,13 @@ function RegistrationForm(props) {
                     autoComplete="new-password"
                     value={props.formik.values.password}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
 
                 />
                 {props.formik.touched.password
                     && props.formik.errors.password
                     && <span className="validation-error-msg">{props.formik.errors.password}</span>
                 }
-
 
                 <TextField
                     id="passwordRepeat"
@@ -102,13 +105,13 @@ function RegistrationForm(props) {
                     autoComplete="new-password"
                     value={props.formik.values.passwordRepeat}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
 
                 />
                 {props.formik.touched.passwordRepeat
                     && props.formik.errors.passwordRepeat
                     && <span className="validation-error-msg">{props.formik.errors.passwordRepeat}</span>
                 }
-
 
             </ThemeProvider>
             <button

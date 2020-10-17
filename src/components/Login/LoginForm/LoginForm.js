@@ -33,6 +33,7 @@ function LoginForm(props) {
                     autoComplete="email"
                     value={props.formik.values.email}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
                 />
                 {props.formik.touched.email
                     && props.formik.errors.email
@@ -49,6 +50,7 @@ function LoginForm(props) {
                     autoComplete="new-password"
                     value={props.formik.values.password}
                     onChange={props.formik.handleChange}
+                    spellCheck="false"
                 />
                 {props.formik.touched.password
                     && props.formik.errors.password

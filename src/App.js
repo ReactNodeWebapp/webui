@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 
 import Routes from './Routes';
-import FooterContainer from './components/Footer/FooterContainer/FooterContainer';
 import SidebarContainer from "./components/Sidebar/SidebarContainer/SidebarContainer";
 import SidebarContext from "./context/SidebarContext";
 import UserContext from "./context/UserContext";

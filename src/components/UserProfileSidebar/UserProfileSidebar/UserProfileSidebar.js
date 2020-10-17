@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';

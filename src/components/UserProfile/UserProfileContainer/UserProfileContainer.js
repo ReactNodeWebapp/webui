@@ -69,11 +69,11 @@ function UserProfileContainer(props) {
         firstName: Yup.string()
             .required('First name is required.')
             .max(20, "Maximum number of characters is 20.")
-            .matches(/^[A-Za-zDŠĐŽĆČšđčćž ]+$/, "First name contains only letters."),
+            .matches(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u, "First name contains only letters."),
         lastName: Yup.string()
             .required('Last name is required.')
             .max(40, "Maximum number of characters is 40.")
-            .matches(/^[A-Za-zDŠĐŽĆČšđčćž ]+$/, "Last name contains only letters."),
+            .matches(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u, "Last name contains only letters."),
         email: Yup.string()
             .email('Incorrect e-mail format.')
             .required('E-mail is required.'),

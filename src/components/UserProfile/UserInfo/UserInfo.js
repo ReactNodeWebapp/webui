@@ -29,7 +29,7 @@ function UserInfo({
 
     useEffect(() => {
         getGeolocation();
-    });
+    }, []);
 
     useEffect(() => {
         setDisabled(shallowEqual(formik.initialValues, formik.values));
@@ -104,6 +104,7 @@ function UserInfo({
                             autoComplete="name"
                             value={formik.values.firstName || ''}
                             onChange={formik.handleChange}
+                            spellCheck="false"
                         />
                         {formik.errors.firstName
                             && formik.touched.firstName
@@ -120,6 +121,7 @@ function UserInfo({
                             autoComplete="family-name"
                             value={formik.values.lastName || ''}
                             onChange={formik.handleChange}
+                            spellCheck="false"
                         />
                         {formik.errors.firstName
                             && formik.touched.firstName
@@ -136,6 +138,7 @@ function UserInfo({
                             autoComplete="email"
                             value={formik.values.email || ''}
                             onChange={formik.handleChange}
+                            spellCheck="false"
                         />
                         {formik.errors.firstName
                             && formik.touched.firstName
@@ -152,6 +155,7 @@ function UserInfo({
                             autoComplete="tel"
                             value={formik.values.telephoneNumber || ''}
                             onChange={formik.handleChange}
+                            spellCheck="false"
                         />
                         {formik.errors.firstName
                             && formik.touched.firstName

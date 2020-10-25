@@ -1,0 +1,8 @@
+@import "src/styles/variables";
+
+.upper-header {
+  position: fixed;
+  background-color: $contrast-color;
+  width: 100%;
+  height: 35px;
+}

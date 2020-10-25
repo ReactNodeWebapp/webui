@@ -1,7 +1,7 @@
 @import './src/styles/_variables';
 
 .hero {
-    background-color: $primary-color;
+    background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -20,7 +20,7 @@
     }
 
     &__slogan {
-        color: white;
+        color: $dark-color;
         font-weight: 500;
         font-size: 3rem;
         margin: .25rem 0 1rem;
@@ -29,12 +29,12 @@
     &__summary {
         max-width: 80%;
         font-size: 1.1rem;
-        color: white;
+        color: $dark-color;
     }
 
     &__get-started-btn {
         padding: .75rem 3rem;
-        color: white;
+        color: $dark-color;
         font-size: 1rem;
         background-color: $contrast-color;
         border: none;

@@ -8,11 +8,11 @@ import UserContext from "../../../context/UserContext";
 
 import './Header.scss';
 
-function Header({toggleUserProfileMenu}) {
+function Header({toggleUserProfileMenu, menuButtonBoxShadow}) {
 
     const {menu, setMenu} = useContext(SidebarContext);
 
-    const [boxShadow, setBoxShadow] = useState(false);
+    const [headerBoxShadow, setHeaderBoxShadow] = useState(false);
 
     const {user} = useContext(UserContext);
 
@@ -24,17 +24,16 @@ function Header({toggleUserProfileMenu}) {
 
         window.addEventListener("scroll", () => {
             if (window.scrollY > 10) {
-                setBoxShadow(true);
+                setHeaderBoxShadow(true);
             } else {
-                setBoxShadow(false);
+                setHeaderBoxShadow(false);
             }
         });
-
     });
 
     return (
         <>
-            <header className={boxShadow ? "header header--box-shadow" : "header"}>
+            <header className={headerBoxShadow ? "header header--active" : "header"}>
                 <a href='/'>
                     <img
                         src={require('../../../images/logo.png')}
@@ -42,19 +41,20 @@ function Header({toggleUserProfileMenu}) {
                         alt="Brand logo"
                     />
                 </a>
+                <div className="header__items-container">
+                    <a href="/products" className="header__item">Products</a>
+                    <a href="/contact" className="header__item">Contact</a>
+                    <a href="/about" className="header__item">About</a>
+                </div>
                 <div className="header__buttons-container">
-                    <span className="header__products">Products</span>
-                    <span className="header__about">About</span>
-                    <span className="header__contact">Contact</span>
                     {user.email ?
-                        <div
-                            className="header__user-wrapper"
+                        <div className={menuButtonBoxShadow === true ?
+                                "header__user-wrapper header__user-wrapper--active"
+                                :
+                                "header__user-wrapper"
+                            }
                             onClick={() => {
                                 toggleUserProfileMenu();
-                                document
-                                    .getElementsByClassName('header__arrow-down')[0]
-                                    .classList
-                                    .toggle('active');
                             }}
                         >
                             <Avatar
@@ -63,19 +63,18 @@ function Header({toggleUserProfileMenu}) {
                             >
                                 {user.firstName.charAt(0)}
                             </Avatar>
-                            <i className="header__arrow-down"></i>
                         </div>
                         :
                         <>
                             <a
                                 href="/login"
-                                className="header__btn header__signin-btn"
+                                className="header__signin-btn"
                             >
                                 Sign In
                             </a>
                             <a
                                 href="/registration"
-                                className="header__btn header__signout-btn"
+                                className="header__signup-btn"
                             >
                                 Sign Up
                             </a>

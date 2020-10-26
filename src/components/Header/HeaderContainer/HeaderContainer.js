@@ -8,19 +8,23 @@ function HeaderContainer() {
 
     const [profileMenu, setProfileMenu] = useState(false);
 
+    const [menuButtonBoxShadow, setMenuButtonBoxShadow] = useState(false);
+
     const toggleUserProfileMenu = () => {
         setProfileMenu(!profileMenu);
+        setMenuButtonBoxShadow(!menuButtonBoxShadow);
     }
 
+    // NA DVA MJESTA SAM PREDAO ISTU STVAR - toggleUserProfileMenu()
     return (
         <>
             <Header
                 toggleUserProfileMenu={toggleUserProfileMenu}
+                menuButtonBoxShadow={menuButtonBoxShadow}
             />
             {profileMenu &&
-            <UserMenuContainer
-                profileMenu={profileMenu}
-                toggleUserProfileMenu={toggleUserProfileMenu}
+                <UserMenuContainer
+                    toggleUserProfileMenu={toggleUserProfileMenu}
             />
             }
 

@@ -2,7 +2,59 @@
 
 .upper-header {
   position: fixed;
-  background-color: $primary-color;
+  top: 0;
+  background-color: white;
+  z-index: 100;
   width: 100%;
-  height: 35px;
+  height: 40px;
+  box-shadow: inset 0 1px 0 0 #eae8e4, inset 0 -1px 0 0 #eae8e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+
+  &__services {
+    display: flex;
+    align-items: center;
+    color: $dark-color;
+    height: 100%;
+  }
+
+  &__services-link {
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+
+  }
+
+  &__language-container,
+  &__help-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__language,
+  &__help {
+    font-size: 14px;
+    margin-left: .5rem;
+    color: $dark-color;
+  }
+
+  &__services-icon {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+
+    & path {
+      color: $dark-color !important;
+    }
+  }
+
+  &__language {
+    text-transform: uppercase;
+  }
 }

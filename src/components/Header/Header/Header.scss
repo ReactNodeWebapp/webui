@@ -2,7 +2,7 @@
 
 .header {
     position: fixed;
-    top: 0;
+    top: 40px;
     width: 100%;
     height: 65px;
     display: flex;
@@ -13,11 +13,11 @@
     transition: box-shadow .25s ease-in-out;
 
     &--active {
-        box-shadow: 0 1px 5px rgba(0,0,0,.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,.1);
     }
 
     &__logo {
-        width: 140px;
+        width: 130px;
         height: auto;
     }
 

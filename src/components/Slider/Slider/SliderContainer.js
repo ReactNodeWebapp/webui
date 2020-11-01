@@ -4,6 +4,7 @@ import SliderContent from "../SliderContent/SliderContent";
 import Arrow from "../Arrow/Arrow";
 
 import './SliderContainer.scss';
+import Dots from "../Dots/Dots";
 
 function SliderContainer() {
 
@@ -22,20 +23,20 @@ function SliderContainer() {
         if (activeIndex === 0) {
             setActiveIndex(images.length - 1);
             setTranslate((images.length - 1) * 100);
+        } else {
+            setActiveIndex(activeIndex - 1);
+            setTranslate((activeIndex - 1) * 100);
         }
-
-        setActiveIndex(activeIndex - 1);
-        setTranslate(activeIndex - 1);
     }
 
     const nextSlide = () => {
         if (activeIndex === images.length - 1) {
             setActiveIndex(0);
             setTranslate(0);
+        } else {
+            setActiveIndex(activeIndex + 1);
+            setTranslate((activeIndex + 1) * 100);
         }
-
-        setActiveIndex(activeIndex + 1);
-        setTranslate((activeIndex + 1) * 100);
     }
 
     console.log(activeIndex)
@@ -43,8 +44,9 @@ function SliderContainer() {
     return (
         <div className="slider-container">
             <SliderContent images={images} translate={translate}/>
-            <Arrow direction="left" handleClick={prevSlide} />
-            <Arrow direction="right" handleClick={nextSlide} />
+            <Arrow direction="left" handleClick={prevSlide}/>
+            <Arrow direction="right" handleClick={nextSlide}/>
+            <Dots images={images} activeIndex={activeIndex}/>
         </div>
     );
 }

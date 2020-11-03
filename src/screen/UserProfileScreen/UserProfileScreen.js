@@ -4,6 +4,7 @@ import UserProfileContainer from "../../components/UserProfile/UserProfileContai
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
 import UserProfileSidebarContainer from "../../components/UserProfileSidebar/UserProfileSidebarContainer/UserProfileSidebarContainer";
 import {USER_INFO} from "../../constants/UserProfileNavItemConstants";
+import UpperHeaderContainer from "../../components/UpperHeader/UpperHeaderContainer/UpperHeaderContainer";
 
 function UserProfileScreen() {
 
@@ -19,6 +20,7 @@ function UserProfileScreen() {
                 activeNavOption={activeNavOption}
                 setActiveNavOption={setActiveNavOption}
             />
+            <UpperHeaderContainer/>
             <HeaderContainer/>
             <UserProfileContainer
                 activeNavOption={activeNavOption}

@@ -29,7 +29,6 @@
     &:not(:last-of-type) {
       margin-right: 1rem;
     }
-
   }
 
   &__language-container,
@@ -45,7 +44,8 @@
     color: $dark-color;
   }
 
-  &__services-icon {
+  &__services-icon,
+  &__user-tools-icon {
     width: 1.25rem !important;
     height: 1.25rem !important;
 
@@ -56,5 +56,20 @@
 
   &__language {
     text-transform: uppercase;
+  }
+
+  &__user-tools {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-tools-icon {
+    margin: 0 1rem;
+  cursor: pointer;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 }

@@ -2,6 +2,9 @@ import React from 'react';
 
 import LanguageIcon from '@material-ui/icons/Language';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import PinDropIcon from '@material-ui/icons/PinDrop';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
 import './UpperHeader.scss';
 
@@ -23,7 +26,9 @@ function UpperHeader() {
                 </a>
             </div>
             <div className="upper-header__user-tools">
-
+                <PinDropIcon className="upper-header__user-tools-icon"/>
+                <FavoriteBorderIcon className="upper-header__user-tools-icon"/>
+                <PersonOutlineIcon className="upper-header__user-tools-icon"/>
             </div>
         </nav>
     );

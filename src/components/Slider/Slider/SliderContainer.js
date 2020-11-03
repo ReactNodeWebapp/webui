@@ -39,8 +39,6 @@ function SliderContainer() {
         }
     }
 
-    console.log(activeIndex)
-
     return (
         <div className="slider-container">
             <SliderContent images={images} translate={translate}/>

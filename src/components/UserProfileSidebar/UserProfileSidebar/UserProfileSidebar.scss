@@ -2,13 +2,13 @@
 
 .user-profile-sidebar {
   position: fixed;
-  top: 65px;
+  top: 105px;
   left: 0;
   padding: 2.5rem 0 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: calc(100% - 75px);
+  height: calc(100% - 105px);
   background-color: white;
   box-shadow: 0 0 8px rgba(0, 0, 0, .08);
   overflow-y: auto;

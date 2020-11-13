@@ -21,7 +21,6 @@ function Header({toggleUserProfileMenu, menuButtonBoxShadow}) {
     }
 
     useEffect(() => {
-
         window.addEventListener("scroll", () => {
             if (window.scrollY > 10) {
                 setHeaderBoxShadow(true);

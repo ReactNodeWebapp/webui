@@ -1,6 +1,8 @@
 @import './styles/_variables.scss';
 
 body {
+  position: relative;
+
   &::-webkit-scrollbar {
     width: 8px;
   }

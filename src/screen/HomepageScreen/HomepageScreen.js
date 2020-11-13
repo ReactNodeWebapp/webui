@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import HeaderContainer from "../../components/Header/HeaderContainer/HeaderContainer";
 import FooterContainer from "../../components/Footer/FooterContainer/FooterContainer";
 import SliderContainer from "../../components/Slider/Slider/SliderContainer";
-import UpperHeaderContainer from "../../components/UpperHeader/UpperHeaderContainer/UpperHeaderContainer";
+import HeaderWrapper from "../../components/HeaderWrapper/HeaderWrapper";
 
 import './HomepageScreen.scss';
 
@@ -11,8 +11,7 @@ function HomepageScreen() {
 
     return (
         <>
-            <UpperHeaderContainer/>
-            <HeaderContainer/>
+            <HeaderWrapper/>
             <SliderContainer/>
             <FooterContainer/>
         </>
